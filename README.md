@@ -7,6 +7,14 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Swagger
+Simplify API development for users, teams, and enterprises with the Swagger open source and professional toolset. Find out how Swagger can help you design and document your APIs at scale.
+![Swagger](https://github.com/Izuchii1311/swagger_api_laravel/assets/82764498/6c593edf-9bbf-4a55-afa5-3778dc3c44dd)
+
+## Postman
+Postman is an API Platform for developers to design, build, test and iterate their APIs. As of February 2023, Postman reports having more than 25 million registered users and 75,000 open APIs, which it says constitutes the world's largest public API hub.
+![Postman](https://github.com/Izuchii1311/swagger_api_laravel/assets/82764498/cc83b953-7164-4ff8-83d4-10e85234fcdf)
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
