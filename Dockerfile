@@ -16,6 +16,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /var/www/html
 COPY . .
 RUN composer install
-RUN php artisan migrate
+RUN DB_CONNECTION=mysql php artisan migrate
 CMD php artisan serve --host=0.0.0.0 --port=8000
 EXPOSE 8000
