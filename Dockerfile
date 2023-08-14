@@ -1,13 +1,16 @@
 FROM php:8.1-alpine
-WORKDIR /var/www/html
+
 
 RUN apk update 
 RUN curl -sS https://getcomposer.org/installer | php -- --version=2.4.3 --install-dir=/usr/local/bin --filename=composer
 
-COPY . .
-RUN composer install
 
-cd /app
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY . /var/www/html
+WORKDIR /var/www/html
+
+#COPY . .
+RUN composer install
 RUN php artisan config:clear
 RUN php artisan migrate:fresh
 
