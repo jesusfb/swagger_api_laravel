@@ -42,7 +42,7 @@ RUN composer install
 
 RUN php artisan optimize
 
-RUN php artisan migrate --seed
+# RUN php artisan migrate --seed
 
 RUN crontab -l | { cat; echo "* * * * * php /app/artisan schedule:run >> /dev/null 2>&1"; } | crontab -
 
