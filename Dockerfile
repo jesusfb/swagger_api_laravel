@@ -1,4 +1,4 @@
-FROM php:8.0.24-zts-alpine3.16
+FROM php:8.1.0-zts-alpine3.16
 WORKDIR /var/www/html
 
 RUN apk update 
