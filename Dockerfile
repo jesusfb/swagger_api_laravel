@@ -8,6 +8,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . .
 RUN composer install
 
-# CMD bash -c "php artisan migrate"
+ CMD bash -c "php artisan l5-swagger:generate"
 CMD ["php","artisan","serve","--host=0.0.0.0"]
 
