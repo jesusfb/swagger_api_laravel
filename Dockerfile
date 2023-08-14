@@ -6,7 +6,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --version=2.4.3 --instal
 
 COPY . .
 RUN composer install
+RUN php artisan config:clear
+RUN php artisan migrate:fresh
 
-CMD bash -c "php artisan migrate && php artisan serve --host 0.0.0.0"
-
-#CMD ["php","artisan","serve","--host=0.0.0.0"]
+CMD ["php","artisan","serve","--host=0.0.0.0"]
