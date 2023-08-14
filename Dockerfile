@@ -9,5 +9,3 @@ RUN composer install
 
 COPY ./run.sh /tmp    
 ENTRYPOINT ["/tmp/run.sh"]
-
-EXPOSE 80 
