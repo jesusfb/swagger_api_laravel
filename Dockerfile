@@ -30,5 +30,7 @@ RUN a2enmod rewrite
 
 RUN composer install --ignore-platform-reqs --no-scripts
 
+CMD bash -c "php artisan migrate"
+
 CMD bash -c "php artisan serve --host 0.0.0.0 --port 8000"
 
