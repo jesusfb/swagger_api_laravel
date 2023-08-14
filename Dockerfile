@@ -1,4 +1,4 @@
-FROM php:8.1-alpine
+FROM php:8.0.24-zts-alpine3.16
 WORKDIR /var/www/html
 
 RUN apk update 
@@ -7,5 +7,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --version=2.4.3 --instal
 COPY . .
 RUN composer install
 
-COPY ./run.sh /tmp    
-ENTRYPOINT ["/tmp/run.sh"]
+CMD ["php","artisan","serve","--host=0.0.0.0"]
