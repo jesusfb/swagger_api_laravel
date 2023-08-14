@@ -22,7 +22,7 @@ FROM php:8.1-fpm
 RUN apt-get update -y && apt-get install -y openssl libpng-dev libxml2-dev curl cron git libzip-dev zip unzip
 
 # Install php extensions
-RUN docker-php-ext-install pdo mbstring gd xml pdo_mysql zip
+# RUN docker-php-ext-install pdo mbstring gd xml pdo_mysql zip
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -42,7 +42,7 @@ RUN composer install
 
 RUN php artisan optimize
 
-#RUN php artisan migrate --seed
+RUN php artisan migrate --seed
 
 RUN crontab -l | { cat; echo "* * * * * php /app/artisan schedule:run >> /dev/null 2>&1"; } | crontab -
 
