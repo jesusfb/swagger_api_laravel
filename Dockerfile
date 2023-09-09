@@ -1,36 +1,18 @@
-#FROM php:8.1-alpine
-
-#RUN apk update 
-    
-#RUN curl -sS https://getcomposer.org/installer | php -- --version=2.4.3 --install-dir=/usr/local/bin --filename=composer
-#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-#COPY . .
-#RUN composer install
-
-#CMD ["php","artisan","serve","--host=0.0.0.0"]
-
-FROM php:8.1-apache
-
-RUN apt-get update && apt-get install -y \
-    curl \
-    unzip
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-RUN docker-php-ext-install pdo pdo_mysql
-
-WORKDIR /app
+FROM richarvey/nginx-php-fpm:1.9.1
 
 COPY . .
 
-RUN chown -R www-data:www-data /app/storage
+# Image config
+ENV SKIP_COMPOSER 1
+ENV WEBROOT /var/www/html/public
+ENV PHP_ERRORS_STDERR 1
+ENV RUN_SCRIPTS 1
+ENV REAL_IP_HEADER 1
 
-RUN a2enmod rewrite
+# Laravel config
+ENV APP_ENV production
+ENV APP_DEBUG false
+ENV LOG_CHANNEL stderr
 
-RUN composer install --ignore-platform-reqs --no-scripts
-
-CMD bash -c "php artisan migrate:fresh"
-
-CMD bash -c "php artisan serve --host 0.0.0.0 --port 8000"
-
+# Allow composer to run as root
+ENV COMPOSER_ALLOW_SUPERUSER 1
